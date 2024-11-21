@@ -1,3 +1,3 @@
 include LICENSE
 include README.md
-recursive-include src/data *.csv
+recursive-include indian_name_maker/data *.csv
