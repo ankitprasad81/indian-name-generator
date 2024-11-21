@@ -1,4 +1,4 @@
-"""High-level functions for generating Indian names."""
+"""High-level generator functions for indian-name-maker package."""
 
 from indian_name_maker.name_generator import NameGenerator
 from typing import List
@@ -7,10 +7,10 @@ from typing import List
 _generator = NameGenerator()
 
 def get_multiple_first_names(count: int = 1) -> List[str]:
-    """Generate multiple random first names efficiently.
+    """Generate multiple first names.
     
     Args:
-        count: Number of first names to generate (default: 1)
+        count: Number of names to generate (default: 1)
         
     Returns:
         List of first names
@@ -18,13 +18,27 @@ def get_multiple_first_names(count: int = 1) -> List[str]:
     Raises:
         ValueError: If count is less than 1
     """
-    return _generator.get_first_names(count)
+    return _generator.get_multiple_first_names(count)
 
-def get_multiple_full_names(count: int = 1, separator: str = " ") -> List[str]:
-    """Generate multiple random full names efficiently.
+def get_multiple_last_names(count: int = 1) -> List[str]:
+    """Generate multiple last names.
     
     Args:
-        count: Number of full names to generate (default: 1)
+        count: Number of names to generate (default: 1)
+        
+    Returns:
+        List of last names
+        
+    Raises:
+        ValueError: If count is less than 1
+    """
+    return _generator.get_multiple_last_names(count)
+
+def get_multiple_full_names(count: int = 1, separator: str = " ") -> List[str]:
+    """Generate multiple full names.
+    
+    Args:
+        count: Number of names to generate (default: 1)
         separator: String to use between first and last name (default: space)
         
     Returns:
@@ -33,4 +47,4 @@ def get_multiple_full_names(count: int = 1, separator: str = " ") -> List[str]:
     Raises:
         ValueError: If count is less than 1
     """
-    return _generator.get_full_names(count, separator)
+    return _generator.get_multiple_full_names(count, separator)

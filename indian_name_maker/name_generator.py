@@ -37,60 +37,66 @@ class NameGenerator:
         except Exception as e:
             raise RuntimeError(f"Error loading {filename}: {str(e)}")
 
-    def get_first_names(self, count: int = 1) -> Union[str, List[str]]:
-        """Get random first names efficiently.
+    def get_first_name(self) -> str:
+        """Get a single random first name."""
+        return self._rng.choice(NameGenerator._first_names_cache)
+
+    def get_last_name(self) -> str:
+        """Get a single random last name."""
+        return self._rng.choice(NameGenerator._last_names_cache)
+
+    def get_full_name(self, separator: str = " ") -> str:
+        """Get a single random full name."""
+        return f"{self.get_first_name()}{separator}{self.get_last_name()}"
+
+    def get_multiple_first_names(self, count: int) -> List[str]:
+        """Get multiple random first names efficiently.
         
         Args:
-            count: Number of names to generate (default: 1)
+            count: Number of names to generate
             
         Returns:
-            A single name if count=1, otherwise a list of names
+            List of first names
+            
+        Raises:
+            ValueError: If count is less than 1
         """
         if count < 1:
             raise ValueError("Count must be greater than 0")
-            
-        if count == 1:
-            return self._rng.choice(NameGenerator._first_names_cache)
-        return self._rng.choice(NameGenerator._first_names_cache, size=count, replace=True).tolist()
+        return self._rng.choice(NameGenerator._first_names_cache, size=count).tolist()
 
-    def get_last_names(self, count: int = 1) -> Union[str, List[str]]:
-        """Get random last names efficiently.
+    def get_multiple_last_names(self, count: int) -> List[str]:
+        """Get multiple random last names efficiently.
         
         Args:
-            count: Number of names to generate (default: 1)
+            count: Number of names to generate
             
         Returns:
-            A single name if count=1, otherwise a list of names
+            List of last names
+            
+        Raises:
+            ValueError: If count is less than 1
         """
         if count < 1:
             raise ValueError("Count must be greater than 0")
-            
-        if count == 1:
-            return self._rng.choice(NameGenerator._last_names_cache)
-        return self._rng.choice(NameGenerator._last_names_cache, size=count, replace=True).tolist()
+        return self._rng.choice(NameGenerator._last_names_cache, size=count).tolist()
 
-    def get_full_names(self, count: int = 1, separator: str = " ") -> Union[str, List[str]]:
-        """Get random full names efficiently.
+    def get_multiple_full_names(self, count: int, separator: str = " ") -> List[str]:
+        """Get multiple random full names efficiently.
         
         Args:
-            count: Number of names to generate (default: 1)
+            count: Number of names to generate
             separator: String to use between first and last name
             
         Returns:
-            A single name if count=1, otherwise a list of names
+            List of full names
+            
+        Raises:
+            ValueError: If count is less than 1
         """
         if count < 1:
             raise ValueError("Count must be greater than 0")
-            
-        first_names = self.get_first_names(count)
-        last_names = self.get_last_names(count)
         
-        if count == 1:
-            return f"{first_names}{separator}{last_names}"
-        
-        return [f"{f}{separator}{l}" for f, l in zip(first_names, last_names)]
-
-    # Alias methods for backward compatibility
-    get_first_name = lambda self: self.get_first_names(1)
-    get_last_name = lambda self: self.get_last_names(1)
-    get_full_name = lambda self, separator=" ": self.get_full_names(1, separator)
+        first_names = self.get_multiple_first_names(count)
+        last_names = self.get_multiple_last_names(count)
+        return [f"{first}{separator}{last}" for first, last in zip(first_names, last_names)]
