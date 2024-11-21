@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "indian-name-maker"
-version = "0.1.1"
+version = "0.1.2"
 description = "A Python package to generate Indian names"
 readme = "README.md"
 authors = [{ name = "Ankit Kumar"}]
