@@ -1,5 +1,5 @@
 import pytest
-from indian_name_generator import NameGenerator
+from indian_name_maker import NameGenerator
 
 @pytest.fixture
 def generator():

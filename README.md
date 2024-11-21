@@ -1,4 +1,4 @@
-# Indian Name Generator
+# Indian Name Maker
 
 A Python package to generate Indian names. The package uses a synthetically generated dataset of Indian names created using state-of-the-art language models (Llama-3.2-11B-Vision-Instruct and OpenAI ChatGPT-4 v2.0).
 
@@ -6,14 +6,14 @@ A Python package to generate Indian names. The package uses a synthetically gene
 
 Install the package directly using pip:
 ```bash
-pip install indian-name-generator
+pip install indian-name-maker
 ```
 
 ## Usage
 
 ### Python API
 ```python
-from indian_name_generator import NameGenerator
+from indian_name_maker import NameGenerator
 
 # Create a name generator instance
 generator = NameGenerator()
