@@ -7,12 +7,12 @@ name = "indian-name-generator"
 version = "0.1.0"
 description = "A Python package to generate Indian names"
 readme = "README.md"
-authors = [{ name = "Author" }]  # Fixed missing closing quote
+authors = [{ name = "Ankit Kumar"}]
 license = { text = "CC BY-NC-SA 4.0" }
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "License :: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International",
+    "License :: Other/Proprietary License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
